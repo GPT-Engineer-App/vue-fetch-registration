@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
+import { useDataStore } from "@/stores/dataStore";
+import { useStore } from "pinia-react";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +17,7 @@ const Register = () => {
   });
 
   const navigate = useNavigate();
+  const dataStore = useStore(useDataStore);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,6 +51,9 @@ const Register = () => {
       if (!response.ok) {
         throw new Error("Registration failed");
       }
+
+      const data = await response.json();
+      dataStore.setRegisterObj(data);
 
       toast.success("Registration successful");
       navigate("/login");
