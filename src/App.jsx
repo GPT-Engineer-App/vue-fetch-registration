@@ -25,7 +25,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Router>
-          <pinia.Provider>
+          <PiniaVuePlugin>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Index />} />
@@ -33,7 +33,7 @@ const App = () => {
                 {/* Add more routes here as needed */}
               </Route>
             </Routes>
-          </pinia.Provider>
+          </PiniaVuePlugin>
         </Router>
       </TooltipProvider>
     </QueryClientProvider>
