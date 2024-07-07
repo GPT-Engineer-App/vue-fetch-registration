@@ -35,7 +35,7 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/rent/login", {
+      const response = await fetch("http://localhost:8080/rent/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

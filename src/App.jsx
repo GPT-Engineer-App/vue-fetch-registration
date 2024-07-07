@@ -8,6 +8,7 @@ import Index from "./pages/Index.jsx";
 import Register from "./pages/Register.jsx";
 import { createPinia } from 'pinia';
 import { PiniaVuePlugin } from 'pinia';
+import { PiniaProvider } from 'pinia-react';
 
 const queryClient = new QueryClient();
 const pinia = createPinia();
@@ -26,7 +27,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Router>
-          <pinia.Provider value={pinia}>
+          <PiniaProvider store={pinia}>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Index />} />
@@ -36,7 +37,7 @@ const App = () => {
                 {/* Add more routes here as needed */}
               </Route>
             </Routes>
-          </pinia.Provider>
+          </PiniaProvider>
         </Router>
       </TooltipProvider>
     </QueryClientProvider>
