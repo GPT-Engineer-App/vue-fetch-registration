@@ -28,14 +28,7 @@ const Layout = () => {
   );
 };
 
-const navItems = [
-  {
-    title: "Register",
-    to: "/register",
-    icon: <UserPlus className="h-4 w-4" />,
-  },
-  // other nav items
-];
+
 
 const DesktopNav = () => (
   <nav className="hidden md:flex md:items-center md:gap-5 lg:gap-6 text-lg font-medium md:text-sm">
@@ -46,7 +39,7 @@ const DesktopNav = () => (
       <Package2 className="h-6 w-6" />
       <span className="sr-only">Acme Inc</span>
     </NavItem>
-    {navItems.map((item) => (
+    {navItems.map((item, index) => (
       <NavItem key={item.to} to={item.to}>
         {item.title}
       </NavItem>
@@ -71,7 +64,7 @@ const MobileNav = () => (
           <Package2 className="h-6 w-6" />
           <span className="sr-only">Acme Inc</span>
         </NavItem>
-        {navItems.map((item) => (
+        {navItems.map((item, index) => (
           <NavItem key={item.to} to={item.to}>
             {item.title}
           </NavItem>
