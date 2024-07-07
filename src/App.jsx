@@ -7,9 +7,11 @@ import Layout from "./layouts/default"; // available: default, navbar, sidebar
 import Index from "./pages/Index.jsx";
 import Register from "./pages/Register.jsx";
 import { createPinia, PiniaVuePlugin } from 'pinia';
+import { PiniaProvider } from 'pinia-react';
 
 const queryClient = new QueryClient();
 const pinia = createPinia();
+
 
 export const navItems = [
   {
@@ -25,7 +27,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Router>
-          <pinia>
+          <PiniaProvider store={pinia}>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Index />} />
@@ -35,7 +37,7 @@ const App = () => {
                 {/* Add more routes here as needed */}
               </Route>
             </Routes>
-          </pinia>
+          </PiniaProvider>
         </Router>
       </TooltipProvider>
     </QueryClientProvider>
