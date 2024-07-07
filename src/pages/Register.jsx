@@ -16,7 +16,6 @@ const Register = () => {
   });
 
   const navigate = useNavigate();
-
   const dataStore = useDataStore();
 
   const handleChange = (e) => {
