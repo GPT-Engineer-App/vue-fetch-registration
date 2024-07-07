@@ -6,7 +6,10 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/default"; // available: default, navbar, sidebar
 import Index from "./pages/Index.jsx";
 import Register from "./pages/Register.jsx";
+import { createPinia, PiniaVuePlugin } from 'pinia';
+
 const queryClient = new QueryClient();
+const pinia = createPinia();
 
 export const navItems = [
   {
