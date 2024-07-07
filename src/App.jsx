@@ -13,7 +13,7 @@ const pinia = createPinia();
 
 export const navItems = [
   {
-    title: "Home", // Feel free to change this to your liking
+    title: "Dashboard", // Feel free to change this to your liking
     to: "/",
     icon: <Home className="h-4 w-4" />,
   },
