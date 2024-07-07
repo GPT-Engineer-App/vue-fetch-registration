@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDataStore } from "@/stores/dataStore";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,6 +16,7 @@ const Register = () => {
   });
 
   const navigate = useNavigate();
+  const dataStore = useDataStore();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,6 +50,9 @@ const Register = () => {
       if (!response.ok) {
         throw new Error("Registration failed");
       }
+
+      const data = await response.json();
+      dataStore.setRegisterObj(data);
 
       toast.success("Registration successful");
       navigate("/login");
