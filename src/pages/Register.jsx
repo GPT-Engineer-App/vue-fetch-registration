@@ -6,9 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 import { useDataStore } from "@/stores/dataStore";
-import { observer } from "mobx-react-lite";
 
-const Register = observer(() => {
+const Register = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -17,7 +16,6 @@ const Register = observer(() => {
   });
 
   const navigate = useNavigate();
-
   const dataStore = useDataStore();
 
   const handleChange = (e) => {
