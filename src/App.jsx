@@ -25,15 +25,13 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Router>
-          <PiniaVuePlugin>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Index />} />
-                <Route path="/register" element={<Register />} />
-                {/* Add more routes here as needed */}
-              </Route>
-            </Routes>
-          </PiniaVuePlugin>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Index />} />
+              <Route path="/register" element={<Register />} />
+              {/* Add more routes here as needed */}
+            </Route>
+          </Routes>
         </Router>
       </TooltipProvider>
     </QueryClientProvider>
