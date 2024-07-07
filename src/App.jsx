@@ -30,9 +30,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Index />} />
-                <Route path="/register" element={<Layout />}>
-                  <Route index element={<Register />} />
-                </Route>
+                <Route path="/register" element={<Register />} />
                 {/* Add more routes here as needed */}
               </Route>
             </Routes>
