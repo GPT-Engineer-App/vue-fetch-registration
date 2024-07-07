@@ -6,7 +6,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/default"; // available: default, navbar, sidebar
 import Index from "./pages/Index.jsx";
 import Register from "./pages/Register.jsx";
-import { createPinia, Pinia } from "pinia";
+import { createPinia } from "pinia";
 
 const queryClient = new QueryClient();
 const pinia = createPinia();
@@ -25,7 +25,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Router>
-          <Pinia.Provider store={pinia}>
+          <Pinia store={pinia}>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Index />} />
@@ -35,7 +35,7 @@ const App = () => {
                 {/* Add more routes here as needed */}
               </Route>
             </Routes>
-          </Pinia.Provider>
+          </Pinia>
         </Router>
       </TooltipProvider>
     </QueryClientProvider>
