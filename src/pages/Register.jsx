@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useDataStore } from "@/stores/dataStore";
+import { useStore } from "pinia";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,27 +8,22 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 
 const Register = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const store = useStore(useDataStore);
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
+    store.setRegisterObj({
+      ...store.registerObj,
       [name]: value,
-    }));
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.password !== formData.confirmPassword) {
+    if (store.registerObj.password !== store.registerObj.confirmPassword) {
       toast.error("Passwords do not match");
       return;
     }
@@ -39,9 +35,9 @@ const Register = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: formData.username,
-          email: formData.email,
-          password: formData.password,
+          username: store.registerObj.username,
+          email: store.registerObj.email,
+          password: store.registerObj.password,
         }),
       });
 
@@ -70,7 +66,7 @@ const Register = () => {
                 id="username"
                 name="username"
                 type="text"
-                value={formData.username}
+                value={store.registerObj.username}
                 onChange={handleChange}
                 required
               />
@@ -81,7 +77,7 @@ const Register = () => {
                 id="email"
                 name="email"
                 type="email"
-                value={formData.email}
+                value={store.registerObj.email}
                 onChange={handleChange}
                 required
               />
@@ -92,7 +88,7 @@ const Register = () => {
                 id="password"
                 name="password"
                 type="password"
-                value={formData.password}
+                value={store.registerObj.password}
                 onChange={handleChange}
                 required
               />
@@ -103,7 +99,7 @@ const Register = () => {
                 id="confirmPassword"
                 name="confirmPassword"
                 type="password"
-                value={formData.confirmPassword}
+                value={store.registerObj.confirmPassword}
                 onChange={handleChange}
                 required
               />
