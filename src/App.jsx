@@ -3,10 +3,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Home } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { createPinia, PiniaVuePlugin } from 'pinia';
+import { createApp } from 'vue';
 import Layout from "./layouts/default"; // available: default, navbar, sidebar
 import Index from "./pages/Index.jsx";
 import Register from "./pages/Register.jsx";
 const queryClient = new QueryClient();
+
+const pinia = createPinia();
 
 export const navItems = [
   {
@@ -22,15 +26,17 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Router>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Index />} />
-              <Route path="/register" element={<Layout />}>
-                <Route index element={<Register />} />
+          <pinia>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Index />} />
+                <Route path="/register" element={<Layout />}>
+                  <Route index element={<Register />} />
+                </Route>
+                {/* Add more routes here as needed */}
               </Route>
-              {/* Add more routes here as needed */}
-            </Route>
-          </Routes>
+            </Routes>
+          </pinia>
         </Router>
       </TooltipProvider>
     </QueryClientProvider>
